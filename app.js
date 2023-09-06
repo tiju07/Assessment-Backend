@@ -38,7 +38,9 @@ app.post("/register", (request, response) => {
         .hash(request.body.password, 10)
         .then((hashedPassword) => {
             const user = new User({
+                username: request.body.username,
                 email: request.body.email,
+                dob: request.body.dob,
                 password: hashedPassword,
             });
             user.save()
